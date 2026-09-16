@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<header th:fragment="header">
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" th:href="@{/categories}">REST API + AJAX Demo</a>
+			<div>
+				<a class="btn btn-outline-light btn-sm me-2" th:href="@{/categories}">Categories</a>
+				<a class="btn btn-outline-light btn-sm me-2" th:href="@{/products}">Products</a>
+				<a class="btn btn-outline-warning btn-sm" href="/swagger-ui/index.html" target="_blank">Swagger UI</a>
+			</div>
+		</div>
+	</nav>
+</header>
+
+</body>
+</html>
