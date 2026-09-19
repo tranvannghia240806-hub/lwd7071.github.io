@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import vn.iotstar.entity.Category;
 import vn.iotstar.model.Response;
@@ -61,9 +63,10 @@ public class CategoryAPIController {
 	// =========================
 	// CREATE
 	// =========================
-	@PostMapping(path = "/addCategory")
+	@PostMapping(path = "/addCategory", consumes = "multipart/form-data")
 	public ResponseEntity<?> addCategory(
 			@Validated @RequestParam("categoryName") String categoryName,
+			@Parameter(description = "Icon (file ảnh)", schema = @Schema(type = "string", format = "binary"))
 			@RequestParam(value = "icon", required = false) MultipartFile icon) {
 
 		Optional<Category> optCategory = categoryService.findByCategoryName(categoryName);
@@ -91,10 +94,11 @@ public class CategoryAPIController {
 	// =========================
 	// UPDATE
 	// =========================
-	@PutMapping(path = "/updateCategory")
+	@PutMapping(path = "/updateCategory", consumes = "multipart/form-data")
 	public ResponseEntity<?> updateCategory(
 			@Validated @RequestParam("categoryId") Long categoryId,
 			@Validated @RequestParam("categoryName") String categoryName,
+			@Parameter(description = "Icon mới (bỏ trống nếu giữ icon cũ)", schema = @Schema(type = "string", format = "binary"))
 			@RequestParam(value = "icon", required = false) MultipartFile icon) {
 
 		Optional<Category> optCategory = categoryService.findById(categoryId);

@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import vn.iotstar.entity.Category;
 import vn.iotstar.entity.Product;
@@ -68,9 +70,10 @@ public class ProductApiController {
 	// =========================
 	// CREATE
 	// =========================
-	@PostMapping(path = "/addProduct")
+	@PostMapping(path = "/addProduct", consumes = "multipart/form-data")
 	public ResponseEntity<?> addProduct(
 			@Validated @RequestParam("productName") String productName,
+			@Parameter(description = "Hình ảnh sản phẩm", schema = @Schema(type = "string", format = "binary"))
 			@RequestParam(value = "imageFile", required = false) MultipartFile productImage,
 			@Validated @RequestParam("unitPrice") Double unitPrice,
 			@Validated @RequestParam("discount") Double discount,
@@ -118,10 +121,11 @@ public class ProductApiController {
 	// =========================
 	// UPDATE
 	// =========================
-	@PutMapping(path = "/updateProduct")
+	@PutMapping(path = "/updateProduct", consumes = "multipart/form-data")
 	public ResponseEntity<?> updateProduct(
 			@Validated @RequestParam("productId") Long productId,
 			@Validated @RequestParam("productName") String productName,
+			@Parameter(description = "Hình ảnh mới (bỏ trống nếu giữ ảnh cũ)", schema = @Schema(type = "string", format = "binary"))
 			@RequestParam(value = "imageFile", required = false) MultipartFile productImage,
 			@Validated @RequestParam("unitPrice") Double unitPrice,
 			@Validated @RequestParam("discount") Double discount,
