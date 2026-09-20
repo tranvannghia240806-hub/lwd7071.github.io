@@ -22,7 +22,6 @@ public class SpringbootRestApiAjaxApplication {
 		SpringApplication.run(SpringbootRestApiAjaxApplication.class, args);
 	}
 
-	// UTF-8 cho toan bo request/response
 	@Bean
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	CharacterEncodingFilter characterEncodingFilter() {
@@ -32,7 +31,6 @@ public class SpringbootRestApiAjaxApplication {
 		return filter;
 	}
 
-	// Khoi tao thu muc luu file khi app start
 	@Bean
 	CommandLineRunner init(IStorageService storageService) {
 		return (args -> storageService.init());

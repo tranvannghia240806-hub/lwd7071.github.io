@@ -56,8 +56,6 @@ public class Product implements Serializable {
 	@Column(nullable = false)
 	private Short status;
 
-	// Chi bo qua field "products" cua Category khi serialize (tranh vong lap),
-	// van tra ve categoryId + categoryName de AJAX hien thi ten loai san pham
 	@JsonIgnoreProperties({ "products" })
 	@ManyToOne
 	@JoinColumn(name = "categoryId")

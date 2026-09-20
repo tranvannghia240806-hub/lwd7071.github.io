@@ -40,18 +40,12 @@ public class ProductApiController {
 	@Autowired
 	private IStorageService storageService;
 
-	// =========================
-	// GET ALL
-	// =========================
 	@GetMapping
 	public ResponseEntity<?> getAllProduct() {
 		return new ResponseEntity<Response>(
 				new Response(true, "Thành công", productService.findAll()), HttpStatus.OK);
 	}
 
-	// =========================
-	// GET BY ID
-	// =========================
 	@PostMapping(path = "/getProduct")
 	public ResponseEntity<?> getProduct(@Validated @RequestParam("id") Long id) {
 		Optional<Product> product = productService.findById(id);
@@ -65,9 +59,6 @@ public class ProductApiController {
 		}
 	}
 
-	// =========================
-	// CREATE
-	// =========================
 	@PostMapping(path = "/addProduct", consumes = "multipart/form-data")
 	public ResponseEntity<?> addProduct(
 			@Validated @RequestParam("productName") String productName,
@@ -115,9 +106,6 @@ public class ProductApiController {
 				new Response(true, "Thành công", saved), HttpStatus.OK);
 	}
 
-	// =========================
-	// UPDATE
-	// =========================
 	@PutMapping(path = "/updateProduct", consumes = "multipart/form-data")
 	public ResponseEntity<?> updateProduct(
 			@Validated @RequestParam("productId") Long productId,
@@ -164,9 +152,6 @@ public class ProductApiController {
 				new Response(true, "Cập nhật thành công", updated), HttpStatus.OK);
 	}
 
-	// =========================
-	// DELETE
-	// =========================
 	@DeleteMapping(path = "/deleteProduct")
 	public ResponseEntity<?> deleteProduct(@Validated @RequestParam("productId") Long productId) {
 

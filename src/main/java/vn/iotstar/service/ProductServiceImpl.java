@@ -45,7 +45,6 @@ public class ProductServiceImpl implements IProductService {
 	@Override
 	public Product save(Product entity) {
 
-		// Neu la update va khong upload anh moi -> giu anh cu
 		if (entity.getProductId() != null) {
 			Optional<Product> opt = findById(entity.getProductId());
 			if (opt.isPresent() && (entity.getImages() == null || entity.getImages().isBlank())) {

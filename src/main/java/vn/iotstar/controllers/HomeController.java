@@ -18,13 +18,11 @@ public class HomeController {
 		return "redirect:/categories";
 	}
 
-	// Trang quan ly Category (danh sach + them + sua + xoa qua AJAX)
 	@GetMapping("/categories")
 	public String categories() {
 		return "categories/ajax";
 	}
 
-	// Trang quan ly Product (can danh sach Category de hien thi dropdown)
 	@GetMapping("/products")
 	public String products(Model model) {
 		model.addAttribute("categories", categoryService.findAll());

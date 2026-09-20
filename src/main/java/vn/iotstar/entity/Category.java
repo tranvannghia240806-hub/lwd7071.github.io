@@ -37,7 +37,6 @@ public class Category implements Serializable {
 	@Column(length = 300)
 	private String icon;
 
-	// Khong tra ve danh sach product trong JSON cua Category (tranh vong lap)
 	@JsonIgnore
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	private Set<Product> products = new HashSet<>();

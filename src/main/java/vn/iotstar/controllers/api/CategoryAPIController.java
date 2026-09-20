@@ -33,18 +33,13 @@ public class CategoryAPIController {
 	@Autowired
 	private IStorageService storageService;
 
-	// =========================
-	// GET ALL
-	// =========================
+
 	@GetMapping
 	public ResponseEntity<?> getAllCategory() {
 		return new ResponseEntity<Response>(
 				new Response(true, "Thành công", categoryService.findAll()), HttpStatus.OK);
 	}
 
-	// =========================
-	// GET BY ID
-	// =========================
 	@PostMapping(path = "/getCategory")
 	public ResponseEntity<?> getCategory(@Validated @RequestParam("id") Long id) {
 		Optional<Category> category = categoryService.findById(id);
@@ -58,9 +53,6 @@ public class CategoryAPIController {
 		}
 	}
 
-	// =========================
-	// CREATE
-	// =========================
 	@PostMapping(path = "/addCategory", consumes = "multipart/form-data")
 	public ResponseEntity<?> addCategory(
 			@Validated @RequestParam("categoryName") String categoryName,
@@ -88,9 +80,6 @@ public class CategoryAPIController {
 				new Response(true, "Thêm thành công", category), HttpStatus.OK);
 	}
 
-	// =========================
-	// UPDATE
-	// =========================
 	@PutMapping(path = "/updateCategory", consumes = "multipart/form-data")
 	public ResponseEntity<?> updateCategory(
 			@Validated @RequestParam("categoryId") Long categoryId,
@@ -119,9 +108,6 @@ public class CategoryAPIController {
 				new Response(true, "Cập nhật thành công", category), HttpStatus.OK);
 	}
 
-	// =========================
-	// DELETE
-	// =========================
 	@DeleteMapping(path = "/deleteCategory")
 	public ResponseEntity<?> deleteCategory(@Validated @RequestParam("categoryId") Long categoryId) {
 

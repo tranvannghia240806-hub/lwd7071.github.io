@@ -13,10 +13,8 @@ import vn.iotstar.entity.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-	// Tim kiem theo ten
 	List<Category> findByCategoryNameContaining(String name);
 
-	// Tim kiem + phan trang
 	Page<Category> findByCategoryNameContaining(String name, Pageable pageable);
 
 	Optional<Category> findByCategoryName(String name);

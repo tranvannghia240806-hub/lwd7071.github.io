@@ -40,7 +40,6 @@ public class FileSystemStorageServiceImpl implements IStorageService {
 			Path destinationFile = this.rootLocation.resolve(Paths.get(storeFilename))
 					.normalize().toAbsolutePath();
 
-			// Chong Path Traversal
 			if (!destinationFile.getParent().equals(this.rootLocation.toAbsolutePath())) {
 				throw new StorageException("Cannot store file outside current directory");
 			}

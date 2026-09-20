@@ -45,7 +45,6 @@ public class CategoryServiceImpl implements ICategoryService {
 	@Override
 	public Category save(Category entity) {
 
-		// Neu la update (co id) va khong upload icon moi -> giu icon cu
 		if (entity.getCategoryId() != null) {
 			Optional<Category> opt = findById(entity.getCategoryId());
 			if (opt.isPresent() && (entity.getIcon() == null || entity.getIcon().isBlank())) {
